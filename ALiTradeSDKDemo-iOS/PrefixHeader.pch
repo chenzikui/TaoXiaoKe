@@ -1,0 +1,67 @@
+//
+//  PrefixHeader.pch
+//  ALiTradeSDKDemo-iOS
+//
+//  Created by 陈自奎 on 17/5/12.
+//  Copyright © 2017年 com.alibaba-inc.taobao. All rights reserved.
+//
+
+#ifndef PrefixHeader_pch
+#define PrefixHeader_pch
+
+/*
+ 引入头文件
+ */
+#import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
+#import <QuartzCore/QuartzCore.h>
+#import "SDAutoLayout.h"
+#import "UITableView+SDAutoTableViewCellHeight.h"
+#import "AFNetworking.h"
+#import "UIImageView+WebCache.h"
+#import "UIView+SDAutoLayout.h"
+#import "MainBaseNetworkRequest.h"
+#import "NSDictionary+ExFoundation.h"
+#import "NSDictionary+SNFoundation.h"
+#import "NSDate+ExFoundation.h"
+#import "NSDate+SNFoundation.h"
+#import "UIColor+SNFoundation.h"
+#import "ComstomHeader.h"
+
+
+/*
+ 相关设置
+ */
+
+//国际化
+#undef L
+#define L(key) \
+[[NSBundle mainBundle] localizedStringForKey:(key) value:@"" table:nil]
+
+//__weak self 定义
+#define WS(weakSelf)  __weak __typeof(&*self)weakSelf = self;
+
+//是否为空或是[NSNull null]
+#define NotNilAndNull(_ref)  (((_ref) != nil) && (![(_ref) isEqual:[NSNull null]]))
+#define IsNilOrNull(_ref)   (((_ref) == nil) || ([(_ref) isEqual:[NSNull null]]))
+//字符串是否为空
+#define IsStrEmpty(_ref)    (((_ref) == nil) || ([(_ref) isEqual:[NSNull null]]) ||([(_ref)isEqualToString:@""]))
+//数组是否为空
+#define IsArrEmpty(_ref)    (((_ref) == nil) || ([(_ref) isEqual:[NSNull null]]) ||([(_ref) count] == 0))
+//nil字符串判断返回
+#define VALIDATE_STRING(str) (IsNilOrNull(str) ? @"" : str)
+
+
+//**是否为iOS7start**/
+#define iOS7 ([[UIDevice currentDevice].systemVersion doubleValue] >= 7.0)
+
+/**屏幕的宽高**/
+#define ScreenW [UIScreen mainScreen].bounds.size.width
+#define ScreenH [UIScreen mainScreen].bounds.size.height
+
+/*占位图片*/
+#define PlaceholderImage [UIImage imageNamed:@"noresult"]
+//
+#define MainColor [UIColor colorWithPatternImage:[UIImage imageNamed:@"nav_BG"]]
+
+#endif /* PrefixHeader_pch */
