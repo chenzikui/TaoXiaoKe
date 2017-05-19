@@ -9,8 +9,12 @@
 #import "AppDelegate.h"
 #import "ALiDemoMainViewController.h"
 #import "HMTabBarViewController.h"
+#import "TXKHomeViewController.h"
+#import "HMNavigationController.h"
+#import "TXKUserCenterViewController.h"
 //
 #import <NBSDK/ALiTradeSDK.h>
+#import <ALBBSDK/ALBBSDK.h>
 
 @interface AppDelegate () <UISplitViewControllerDelegate>
 
@@ -22,11 +26,22 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
-//    self.window.rootViewController = [[UINavigationController alloc] initWithRootViewController:[[ALiDemoMainViewController alloc] init]];
+    self.window.backgroundColor = [UIColor whiteColor];
+
+    self.window.rootViewController = [[UINavigationController alloc] initWithRootViewController:[[ALiDemoMainViewController alloc] init]];
     HMTabBarViewController *tabVC=[[HMTabBarViewController alloc]init];
     self.window.rootViewController=tabVC;
-    self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
+
+    
+//    TXKHomeViewController *mainVC = [[TXKHomeViewController alloc] init];
+//    HMNavigationController *mainNavigationController = [[HMNavigationController alloc] initWithRootViewController:mainVC];
+//    TXKUserCenterViewController *leftVC = [[TXKUserCenterViewController alloc] init];
+//    LeftSlideViewController *LeftSlideVC = [[LeftSlideViewController alloc] initWithLeftView:leftVC andMainView:mainNavigationController];
+//    UITabBarController *tabVC=[[UITabBarController alloc]init];
+//    [tabVC addChildViewController:LeftSlideVC];
+//    self.window.rootViewController=tabVC;
+    
     
     // 外部使用只能用Release环境
     [[ALiTradeSDK sharedInstance] setEnv:ALiEnvironmentRelease];
@@ -54,6 +69,8 @@
     
     // 设置全局配置，是否强制使用h5
     [[ALiTradeSDK sharedInstance] setIsForceH5:NO];
+    
+
     
     return YES;
 }

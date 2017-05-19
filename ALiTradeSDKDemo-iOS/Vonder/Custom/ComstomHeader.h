@@ -12,6 +12,8 @@
 
 #import "CustomLabel.h"
 #import "CustomWebController.h"
-
+#import "CustomTableView.h"
+#import "CustomTableViewController.h"
+#import "CustomNavHeadView.h"
 
 #endif /* ComstomHeader_h */

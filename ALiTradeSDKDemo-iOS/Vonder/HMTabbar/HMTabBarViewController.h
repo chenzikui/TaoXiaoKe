@@ -8,7 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
+#import "LeftSlideViewController.h"
+
+
 @interface HMTabBarViewController : UITabBarController
+
+@property (strong, nonatomic) LeftSlideViewController *LeftSlideVC;
 
 
 - (void)showBadgeOnItemIndex:(int)index;   //显示小红点

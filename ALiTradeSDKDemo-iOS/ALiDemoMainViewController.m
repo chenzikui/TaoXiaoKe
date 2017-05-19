@@ -13,6 +13,7 @@
 
 #import <ALBBLoginSDK/ALBBLoginService.h>
 
+
 typedef NS_ENUM(NSInteger, kTableViewRowType) {
     // 登入测试
     kTableViewRowTypeLogin = 0,

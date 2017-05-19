@@ -14,6 +14,7 @@
 #import "BaseSkinColor.h"
 #import "TXKHomeViewController.h"
 #import "ALiDemoMainViewController.h"
+#import "TXKUserCenterViewController.h"
 
 #define TabbarItemNums 2.0    //tabbar的数量 如果是5个设置为5.0
 
@@ -26,14 +27,24 @@
 //@property (nonatomic, weak) EaseConversationListViewController *message;
 @property (nonatomic, weak) ALiDemoMainViewController *personalCenter;
 
+
+
+
 @end
 
 @implementation HMTabBarViewController
 
-
+-(instancetype)init{
+    self=[super init];
+    if (self) {
+        [self setEdgesForExtendedLayout:UIRectEdgeNone];
+    }
+    return self;
+}
 
 - (void)viewDidLoad
 {
+    
     [super viewDidLoad];
     // 添加所有的子控制器
     [self addAllChildVcs];
@@ -68,15 +79,20 @@
 //    EaseConversationListViewController *message=[[EaseConversationListViewController alloc]init];
 //    [self addOneChlildVc:message title:@"消息" imageName:@"message_normal" selectedImageName:@"message_highlight"];
 //    self.message = message;
-//    
-//
-    TXKHomeViewController *vc1=[[TXKHomeViewController alloc]init];
-    [self addOneChlildVc:vc1 title:@"测试1" imageName:@"home_unselected_gr" selectedImageName:@"home_selected_gr"];
-    self.vc1 = vc1;
 
-    ALiDemoMainViewController *vc2=[[ALiDemoMainViewController alloc]init];
-    [self addOneChlildVc:vc2 title:@"测试2" imageName:@"home_unselected_jl" selectedImageName:@"home_selected_jl"];
-    self.personalCenter = vc2;
+    
+
+    
+    TXKHomeViewController *vc1=[[TXKHomeViewController alloc]init];
+    [self addOneChlildVc:vc1 title:@"测试1" imageName:@"tabar_home" selectedImageName:@"tabar_home_select"];
+    self.vc1 = vc1;
+    
+
+
+
+//    ALiDemoMainViewController *vc2=[[ALiDemoMainViewController alloc]init];
+//    [self addOneChlildVc:vc2 title:@"测试2" imageName:@"home_unselected_jl" selectedImageName:@"home_selected_jl"];
+//    self.personalCenter = vc2;
 
 }
 
@@ -90,36 +106,72 @@
  */
 - (void)addOneChlildVc:(UIViewController *)childVc title:(NSString *)title imageName:(NSString *)imageName selectedImageName:(NSString *)selectedImageName
 {
-    // 设置标题
-    childVc.tabBarItem.title = title;
+
     
-    // 设置图标
-    childVc.tabBarItem.image = [UIImage imageNamed:imageName];
-    
-    // 设置tabBarItem的普通文字颜色
-    NSMutableDictionary *textAttrs = [NSMutableDictionary dictionary];
-    textAttrs[NSForegroundColorAttributeName] = TabBarButtonTitleColorNomal;
-    textAttrs[NSFontAttributeName] = [UIFont systemFontOfSize:10];
-    [childVc.tabBarItem setTitleTextAttributes:textAttrs forState:UIControlStateNormal];
-    
-    // 设置tabBarItem的选中文字颜色
-    NSMutableDictionary *selectedTextAttrs = [NSMutableDictionary dictionary];
-    selectedTextAttrs[NSForegroundColorAttributeName] = TabBarButtonTitleColorSelected;
-    [childVc.tabBarItem setTitleTextAttributes:selectedTextAttrs forState:UIControlStateSelected];
-    
-    // 设置选中的图标
-    UIImage *selectedImage = [UIImage imageNamed:selectedImageName];
-    if (iOS7) {
-        // 声明这张图片用原图(别渲染)
-        selectedImage = [selectedImage imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    if ([childVc isKindOfClass:[TXKHomeViewController class]]) {
+        
+        HMNavigationController *nav = [[HMNavigationController alloc] initWithRootViewController:childVc];
+        self.LeftSlideVC = [[LeftSlideViewController alloc] initWithLeftView:[[TXKUserCenterViewController alloc]init] andMainView:nav];
+
+        // 设置标题
+        self.LeftSlideVC.tabBarItem.title = title;
+        
+        // 设置图标
+        self.LeftSlideVC.tabBarItem.image = [UIImage imageNamed:imageName];
+        
+        // 设置tabBarItem的普通文字颜色
+        NSMutableDictionary *textAttrs = [NSMutableDictionary dictionary];
+        textAttrs[NSForegroundColorAttributeName] = TabBarButtonTitleColorNomal;
+        textAttrs[NSFontAttributeName] = [UIFont systemFontOfSize:10];
+        [self.LeftSlideVC.tabBarItem setTitleTextAttributes:textAttrs forState:UIControlStateNormal];
+        
+        // 设置tabBarItem的选中文字颜色
+        NSMutableDictionary *selectedTextAttrs = [NSMutableDictionary dictionary];
+        selectedTextAttrs[NSForegroundColorAttributeName] = TabBarButtonTitleColorSelected;
+        [self.LeftSlideVC.tabBarItem setTitleTextAttributes:selectedTextAttrs forState:UIControlStateSelected];
+        
+        // 设置选中的图标
+        UIImage *selectedImage = [UIImage imageNamed:selectedImageName];
+        if (iOS7) {
+            // 声明这张图片用原图(别渲染)
+            selectedImage = [selectedImage imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+        }
+        self.LeftSlideVC.tabBarItem.selectedImage = selectedImage;
+        
+        // 添加为tabbar控制器的子控制器
+
+         [self addChildViewController:self.LeftSlideVC];
+    }else{
+        
+        // 设置标题
+        childVc.tabBarItem.title = title;
+        
+        // 设置图标
+        childVc.tabBarItem.image = [UIImage imageNamed:imageName];
+        
+        // 设置tabBarItem的普通文字颜色
+        NSMutableDictionary *textAttrs = [NSMutableDictionary dictionary];
+        textAttrs[NSForegroundColorAttributeName] = TabBarButtonTitleColorNomal;
+        textAttrs[NSFontAttributeName] = [UIFont systemFontOfSize:10];
+        [childVc.tabBarItem setTitleTextAttributes:textAttrs forState:UIControlStateNormal];
+        
+        // 设置tabBarItem的选中文字颜色
+        NSMutableDictionary *selectedTextAttrs = [NSMutableDictionary dictionary];
+        selectedTextAttrs[NSForegroundColorAttributeName] = TabBarButtonTitleColorSelected;
+        [childVc.tabBarItem setTitleTextAttributes:selectedTextAttrs forState:UIControlStateSelected];
+        
+        // 设置选中的图标
+        UIImage *selectedImage = [UIImage imageNamed:selectedImageName];
+        if (iOS7) {
+            // 声明这张图片用原图(别渲染)
+            selectedImage = [selectedImage imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+        }
+        childVc.tabBarItem.selectedImage = selectedImage;
+        
+        // 添加为tabbar控制器的子控制器
+        HMNavigationController *nav = [[HMNavigationController alloc] initWithRootViewController:childVc];
+        [self addChildViewController:nav];
     }
-    childVc.tabBarItem.selectedImage = selectedImage;
-    
-    // 添加为tabbar控制器的子控制器
-    HMNavigationController *nav = [[HMNavigationController alloc] initWithRootViewController:childVc];
-//    [self addChildViewController:nav];
-    [self addChildViewController:nav];
-    
     
 }
 

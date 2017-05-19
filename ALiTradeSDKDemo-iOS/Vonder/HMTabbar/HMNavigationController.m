@@ -22,6 +22,7 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
+        [self setEdgesForExtendedLayout:UIRectEdgeNone];
     }
     return self;
 }
@@ -39,6 +40,7 @@
  */
 + (void)initialize
 {
+    
     // 设置UINavigationBarTheme的主
     [self setupNavigationBarTheme];
     

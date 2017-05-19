@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface TXKHomeViewController : UIViewController
+@interface TXKHomeViewController : CustomTableViewController
 
 @end
