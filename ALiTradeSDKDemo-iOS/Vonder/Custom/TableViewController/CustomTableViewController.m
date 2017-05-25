@@ -9,7 +9,7 @@
 #import "CustomTableViewController.h"
 
 
-@interface CustomTableViewController ()<UITableViewDataSource,UITableViewDelegate,CustomNavHeadViewDelegate>
+@interface CustomTableViewController ()<CustomNavHeadViewDelegate>
 {
     CGFloat _oldoffset;
 }
@@ -26,6 +26,8 @@
         _tableView=[[CustomTableView alloc]init];
         _tableView.dataSource=self;
         _tableView.delegate=self;
+        _tableView.tableFooterView=[UIView new];
+        [_tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
     }
     return _tableView;
 }

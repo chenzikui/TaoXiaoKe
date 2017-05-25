@@ -22,7 +22,7 @@
 
         
         for (int index = 0; index < 5; index++) {
-            UIImage *image = [UIImage imageNamed:[NSString stringWithFormat:@"Yosemite%02d",index]];
+            UIImage *image = [UIImage imageNamed:[NSString stringWithFormat:@"Yosemite%02d.jpg",index]];
             [self.imageArray addObject:image];
         }
         
@@ -45,7 +45,7 @@
 - (void)setupUI {
     
     
-    NewPagedFlowView *pageFlowView = [[NewPagedFlowView alloc] initWithFrame:CGRectMake(0, 8, Width, Width * 9 / 16)];
+    NewPagedFlowView *pageFlowView = [[NewPagedFlowView alloc] initWithFrame:CGRectMake(0, 8, Width, custom_H)];
     pageFlowView.backgroundColor = [UIColor whiteColor];
     pageFlowView.delegate = self;
     pageFlowView.dataSource = self;
@@ -102,7 +102,7 @@
     
     PGIndexBannerSubiew *bannerView = (PGIndexBannerSubiew *)[flowView dequeueReusableCell];
     if (!bannerView) {
-        bannerView = [[PGIndexBannerSubiew alloc] initWithFrame:CGRectMake(0, 0, Width, Width * 9 / 16)];
+        bannerView = [[PGIndexBannerSubiew alloc] initWithFrame:CGRectMake(0, 0, Width, custom_H)];
         bannerView.layer.cornerRadius = 4;
         bannerView.layer.masksToBounds = YES;
     }

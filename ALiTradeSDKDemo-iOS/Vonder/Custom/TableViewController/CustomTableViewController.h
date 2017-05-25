@@ -10,7 +10,7 @@
 #import "CustomTableView.h"
 #import "CustomNavHeadView.h"
 
-@interface CustomTableViewController : UIViewController
+@interface CustomTableViewController : UIViewController<UITableViewDataSource,UITableViewDelegate>
 
 
 @property(nonatomic,strong)CustomTableView *tableView;

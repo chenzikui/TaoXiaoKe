@@ -43,7 +43,7 @@ static NSString *subviewClassName;
     self.isOpenAutoScroll = YES;
     self.isCarousel = YES;
     self.leftRightMargin = 20;
-    self.topBottomMargin = 30;
+    self.topBottomMargin = 20;
     _currentPageIndex = 0;
     
     _minimumPageAlpha = 1.0;
@@ -414,7 +414,7 @@ static NSString *subviewClassName;
         }
         
         //重置pageWidth
-        _pageSize = CGSizeMake(self.bounds.size.width - 4 * self.leftRightMargin,(self.bounds.size.width - 4 * self.leftRightMargin) * 9 /16);
+        _pageSize = CGSizeMake(self.bounds.size.width - 4 * self.leftRightMargin,custom_H - 2 * self.topBottomMargin);
         if (self.delegate && [self.delegate respondsToSelector:@selector(sizeForPageInFlowView:)]) {
             _pageSize = [self.delegate sizeForPageInFlowView:self];
         }

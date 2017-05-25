@@ -10,6 +10,9 @@
 
 #import <UIKit/UIKit.h>
 
+#define custom_H 150.0f
+
+
 @protocol NewPagedFlowViewDataSource;
 @protocol NewPagedFlowViewDelegate;
 
@@ -72,7 +75,7 @@ typedef enum{
 @property (nonatomic, assign) CGFloat leftRightMargin;
 
 /**
- 上下间距,默认30
+ 上下间距,默认10
  */
 @property (nonatomic, assign) CGFloat topBottomMargin;
 

@@ -62,6 +62,7 @@
 
 /*占位图片*/
 #define PlaceholderImage [UIImage imageNamed:@"noresult"]
+#define PlaceholderItemImage [UIImage imageNamed:@"invalid"]
 //
 #define MainColor [UIColor colorWithPatternImage:[UIImage imageNamed:@"nav_BG"]]
 

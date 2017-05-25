@@ -13,7 +13,6 @@
 #import "HMTabBar.h"
 #import "BaseSkinColor.h"
 #import "TXKHomeViewController.h"
-#import "ALiDemoMainViewController.h"
 #import "TXKUserCenterViewController.h"
 
 #define TabbarItemNums 2.0    //tabbar的数量 如果是5个设置为5.0
@@ -25,7 +24,6 @@
 @property (nonatomic, weak) TXKHomeViewController *vc1;
 //@property (nonatomic, weak) EaseUsersListViewController *resume;
 //@property (nonatomic, weak) EaseConversationListViewController *message;
-@property (nonatomic, weak) ALiDemoMainViewController *personalCenter;
 
 
 
